@@ -190,10 +190,15 @@ Default value is undef.
 =item * C<lang>
 
 Hash with language information for output.
-Keys are: 'title'.
+Keys are: 'title', 'name-and-surname', 'email', 'subject', 'your-message' and 'send'.
 
 Default value is reference to hash with these value:
- 'title' => 'Page title'
+ 'title' => 'Leave us a message',
+ 'name-and-surname' => 'Name and surname',
+ 'email' => 'Email',
+ 'subject' => 'Subject of you question',
+ 'your-message' => 'Your message',
+ 'send' => 'Send question',
 
 =item * C<tags>
 

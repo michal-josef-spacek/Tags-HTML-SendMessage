@@ -19,18 +19,16 @@ METHODS
 
             Default value is undef.
 
-    *       "charset"
-
-            Document character set.
-
-            Default value is 'UTF-8'.
-
     *       "lang"
 
-            Hash with language information for output. Keys are: 'title'.
+            Hash with language information for output. Keys are: 'title',
+            'name-and-surname', 'email', 'subject', 'your-message' and
+            'send'.
 
             Default value is reference to hash with these value: 'title' =>
-            'Page title'
+            'Leave us a message', 'name-and-surname' => 'Name and surname',
+            'email' => 'Email', 'subject' => 'Subject of you question',
+            'your-message' => 'Your message', 'send' => 'Send question',
 
     *       "tags"
 
@@ -61,16 +59,20 @@ EXAMPLE1
      use CSS::Struct::Output::Indent;
      use Tags::HTML::Page::Begin;
      use Tags::HTML::Page::End;
+     use Tags::HTML::SendMessage;
      use Tags::Output::Indent;
 
      # Object.
      my $tags = Tags::Output::Indent->new(
              'preserved' => ['style'],
              'xml' => 1,
+             'no_simple' => ['textarea'],
      );
-     my $css = CSS::Struct::Output::Indent->new;
      my $begin = Tags::HTML::Page::Begin->new(
-             'css' => $css,
+             'generator' => 'Tags::HTML::SendMessage EXAMPLE1',
+             'tags' => $tags,
+     );
+     my $send_message = Tags::HTML::SendMessage->new(
              'tags' => $tags,
      );
      my $end = Tags::HTML::Page::End->new(
@@ -78,18 +80,8 @@ EXAMPLE1
      );
 
      # Process page
-     $css->put(
-            ['s', 'div'],
-            ['d', 'color', 'red'],
-            ['d', 'background-color', 'black'],
-            ['e'],
-     );
      $begin->process;
-     $tags->put(
-            ['b', 'div'],
-            ['d', 'Hello world!'],
-            ['e', 'div'],
-     );
+     $send_message->process;
      $end->process;
 
      # Print out.
@@ -101,21 +93,46 @@ EXAMPLE1
      #   <head>
      #     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
      #     <meta charset="UTF-8" />
-     #     <meta name="generator" content=
-     #       "Perl module: Tags::HTML::Page::Begin, Version: 0.06" />
+     #     <meta name="generator" content="Tags::HTML::SendMessage EXAMPLE1" />
      #     <title>
      #       Page title
      #     </title>
-     #     <style type="text/css">
-     # div {
-     #      color: red;
-     #      background-color: black;
-     # }
-     # </style>
      #   </head>
      #   <body>
-     #     <div>
-     #       Hello world!
+     #     <div id="send-message">
+     #       <form action="">
+     #         <fieldset>
+     #           <legend>
+     #             Leave us a message
+     #           </legend>
+     #           <label for="name-and-surname">
+     #             Name and surname:
+     #           </label>
+     #           <br />
+     #           <input id="name-and-surname" name="name-and-surname" size="30" />
+     #           <br />
+     #           <label for="email">
+     #             Email:
+     #           </label>
+     #           <br />
+     #           <input id="email" name="email" size="30" />
+     #           <br />
+     #           <label for="subject">
+     #             Subject of you question:
+     #           </label>
+     #           <br />
+     #           <input id="subject" name="subject" size="72" />
+     #           <br />
+     #           <label for="your-message">
+     #             Your message:
+     #           </label>
+     #           <br />
+     #           <textarea id="your-message" name="your-message" cols="75" rows="10">
+     #           </textarea>
+     #           <br />
+     #           <input type="submit" value="Send question" />
+     #         </fieldset>
+     #       </form>
      #     </div>
      #   </body>
      # </html>
