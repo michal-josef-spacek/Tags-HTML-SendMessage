@@ -17,6 +17,7 @@ MANIFEST			This list of files
 META.yml
 README
 SendMessage.pm
+SIGNATURE
 t/Tags-HTML-SendMessage/01-use.t
 t/Tags-HTML-SendMessage/02-version.t
 xt/Tags-HTML-SendMessage/01-pod_coverage.t
