@@ -17,7 +17,7 @@ Readonly::Hash my %LANG => (
 	'send' => 'Send question',
 );
 
-our $VERSION = 0.01;
+our $VERSION = 0.09;
 
 # Constructor.
 sub new {
@@ -336,6 +336,6 @@ BSD 2-Clause License
 
 =head1 VERSION
 
-0.01
+0.09
 
 =cut
