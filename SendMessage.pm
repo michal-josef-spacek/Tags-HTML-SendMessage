@@ -228,6 +228,8 @@ Returns undef.
 
 =head1 EXAMPLE1
 
+=for comment filename=send_message.pl
+
  use strict;
  use warnings;
 
