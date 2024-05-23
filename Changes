@@ -1,5 +1,6 @@
 0.10
  - Add tests.
+ - Fix test dependencies.
  - Regen example in doc output.
  - Rename example file name to better name.
  - Update Module::Install to 1.21 version.
