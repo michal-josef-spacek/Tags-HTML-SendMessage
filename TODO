@@ -1,7 +1,9 @@
 TODO
 ====
-1. Rewrite to use of Tags::HTML?
-2.
+1. Rewrite to use of Tags::HTML.
+2. Rewrite id to 'css_class' parameter.
+3. Rewrite 'lang' to something better.
+4.
 
 Applied
 =======
