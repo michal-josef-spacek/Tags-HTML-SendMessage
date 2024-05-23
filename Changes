@@ -1,4 +1,5 @@
 0.10
+ - Regen example in doc output.
  - Update Module::Install to 1.21 version.
  - Update copyright years.
 
